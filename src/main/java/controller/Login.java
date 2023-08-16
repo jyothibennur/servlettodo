@@ -31,7 +31,7 @@ public class Login extends HttpServlet {
 			if(user.getPwd().equals(password))
 	       {
 		    req.getSession().setAttribute("user", user);
-		    req.getSession().setMaxInactiveInterval(10);
+		    req.getSession().setMaxInactiveInterval(50);
 			resp.getWriter().print("<h1 style=\"color:green\">login sucess</h1>");
 			
 		     

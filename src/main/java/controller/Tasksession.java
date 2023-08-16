@@ -19,7 +19,7 @@ public class Tasksession extends HttpServlet{
 	}
 	else
 	{
-	  req.getRequestDispatcher("AddTask.html").forward(req, resp);
+	  req.getRequestDispatcher("Addtask.html").forward(req, resp);
 	}
 
 	}

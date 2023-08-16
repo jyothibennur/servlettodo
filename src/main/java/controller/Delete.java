@@ -24,9 +24,22 @@ public class Delete extends HttpServlet {
 			UserDao dao = new UserDao();
 			Task task = dao.fetchTask(id);
 			
+			if(task==null)
+			{
+				resp.getWriter().print("<h1>seesion expired,login again</h1>");
+				req.getRequestDispatcher("Login.html").include(req, resp);
+			}
+			else {
+			
+//			logic to remove mapping
+			user.getTask().remove(task);
+			dao.update(user);
+			
+//			logic to delete
 			dao.remove(task);   
-		
-//			MyUser user2=dao.findByEmail(user.getEmail());
+
+//		    logic to update session
+			MyUser user2=dao.findByEmail(user.getEmail());
 			req.getSession().setAttribute("user",user);
             resp.getWriter().print("<h1>status removed sucessfully</h1>");
             req.setAttribute("list", user.getTask());
@@ -36,4 +49,5 @@ public class Delete extends HttpServlet {
 	}
 
 
+}
 }

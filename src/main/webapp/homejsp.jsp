@@ -38,6 +38,7 @@
        <th><a href="changestatus?id=<%=task.getId()%>"><button>change</button></a></th>
        <th><a href="updatestatus?id=<%=task.getId()%>"><button>update</button></a></th>
        <th><a href="deletestatus?id=<%=task.getId()%>"><button>delete</button></a></th>
+                  <!-- url rewriting -->
        </tr>
        <%} %>
        
