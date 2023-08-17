@@ -21,22 +21,12 @@ public class Update extends HttpServlet {
 			resp.getWriter().print("<h1>seesion expired,login again</h1>");
 			req.getRequestDispatcher("Login.html").include(req, resp);
 		} else {
-			int id = Integer.parseInt(req.getParameter("id"));
-			UserDao dao = new UserDao();
-			Task task = dao.fetchTask(id);
+			int id=Integer.parseInt(req.getParameter("id"));
+			UserDao userdao=new UserDao();
+			req.setAttribute("task", userdao.fetchTask(id));
+			req.getRequestDispatcher("EditTask.jsp").forward(req, resp);
 			
-			if (task.isStatus()) 
-				task.setStatus(false);
-			 else 
-                task.setStatus(true);
-			   
-			dao.update(task);
-			MyUser user2=dao.findByEmail(user.getEmail());
-			req.getSession().setAttribute("user",user2);
-            resp.getWriter().print("<h1>status changed sucessfully</h1>");
-            req.setAttribute("list", user2.getTask());
-            req.getRequestDispatcher("homejsp.jsp").include(req, resp);
-		}
+					}
 
 
 }

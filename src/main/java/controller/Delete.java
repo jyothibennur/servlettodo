@@ -40,9 +40,9 @@ public class Delete extends HttpServlet {
 
 //		    logic to update session
 			MyUser user2=dao.findByEmail(user.getEmail());
-			req.getSession().setAttribute("user",user);
+			req.getSession().setAttribute("user",user2);
             resp.getWriter().print("<h1>status removed sucessfully</h1>");
-            req.setAttribute("list", user.getTask());
+            req.setAttribute("list", user2.getTask());
             req.getRequestDispatcher("homejsp.jsp").include(req, resp);
 		}
 
